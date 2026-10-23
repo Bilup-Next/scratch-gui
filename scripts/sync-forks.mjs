@@ -6,12 +6,15 @@ import fs from 'node:fs';
 // checkouts that `pnpm run link` wires up locally: package.json has to pin every fork
 // to an immutable codeload tarball instead. Those pins only stay correct if something
 // moves them, which is what this script does.
+// scratch-blocks, scratch-render and scratch-vm are our own forks; the rest are still
+// tracking MistWarp upstream. Changing a repo here means package.json and pnpm-lock.yaml
+// must be repinned to the same repo, or `deps:check` rejects the mismatch.
 const forks = {
     'scratch-audio': ['MistWarp/scratch-audio', 'develop'],
-    'scratch-blocks': ['MistWarp/scratch-blocks', 'develop'],
+    'scratch-blocks': ['Bilup-Next/scratch-blocks', 'develop'],
     'scratch-paint': ['MistWarp/scratch-paint', 'develop'],
-    'scratch-render': ['MistWarp/scratch-render', 'develop'],
-    'scratch-vm': ['MistWarp/scratch-vm', 'develop']
+    'scratch-render': ['Bilup-Next/scratch-render', 'develop'],
+    'scratch-vm': ['Bilup-Next/scratch-vm', 'develop']
 };
 
 const check = process.argv.includes('--check');
@@ -29,7 +32,10 @@ const manifest = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 // Each importer entry in the lockfile repeats the package.json range. When the two
 // disagree, `pnpm install --frozen-lockfile` installs something nobody asked for,
 // which is how a months-old scratch-blocks reached production.
+// Normalise CRLF first: on Windows the lockfile is checked out with CRLF unless
+// .gitattributes pins it, and the line anchors below would silently match nothing.
 const lockSpecifiers = Object.fromEntries([...fs.readFileSync('pnpm-lock.yaml', 'utf8')
+    .replace(/\r\n/g, '\n')
     .matchAll(/^ {6}(scratch-[\w-]+):\n {8}specifier: (.+)$/gm)].map(match => [match[1], match[2]]));
 
 const broken = [];

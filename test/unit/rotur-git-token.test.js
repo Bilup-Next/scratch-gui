@@ -78,7 +78,7 @@ test('Rotur Git never goes through the CORS proxy', () => {
     ]) {
         expect(() => corsProxyForUrl(url)).toThrow('turned off');
     }
-    expect(corsProxyForUrl('https://github.com/MistWarp/scratch-gui.git')).toBe('https://cors.isomorphic-git.org');
+    expect(corsProxyForUrl('https://github.com/Bilup-next/scratch-gui.git')).toBe('https://cors.isomorphic-git.org');
 });
 
 test('cloning a Rotur Git repo stops before any request', async () => {

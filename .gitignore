@@ -27,3 +27,6 @@ npm-*
 
 # Local agent session exports
 /session-ses_*.md
+
+# AI Tools
+.workbuddy

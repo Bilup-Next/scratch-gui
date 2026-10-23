@@ -5,7 +5,7 @@ import styles from './settings-modal.css';
 
 const BuildVersionFooter = () => {
     const commitUrl = BUILD_ID && BUILD_ID !== 'dev' ?
-        `https://github.com/MistWarp/scratch-gui/commit/${BUILD_ID}` : null;
+        `https://github.com/Bilup-next/scratch-gui/commit/${BUILD_ID}` : null;
     return (
         <p className={styles.detail}>
             <FormattedMessage

@@ -68,7 +68,7 @@ const pull = overrides => ({
     id: `${overrides.repo || 'scratch-gui'}#${overrides.number}`,
     repo: 'scratch-gui',
     title: `Pull ${overrides.number}`,
-    url: `https://github.com/MistWarp/scratch-gui/pull/${overrides.number}`,
+    url: `https://github.com/Bilup-next/scratch-gui/pull/${overrides.number}`,
     state: 'open',
     author: 'Mistium',
     authorUrl: 'https://github.com/Mistium',
@@ -186,7 +186,7 @@ describe('roadmap changes tab', () => {
         expect(wrapper.find('h2').map(node => node.text())).toEqual(['In review2', 'Recently merged1']);
         expect(wrapper.text()).toContain('Pull 20');
         expect(wrapper.text()).toContain('scratch-vm');
-        expect(wrapper.find('a[href="https://github.com/MistWarp/scratch-gui/pull/21"]').exists()).toBe(true);
+        expect(wrapper.find('a[href="https://github.com/Bilup-next/scratch-gui/pull/21"]').exists()).toBe(true);
         expect(wrapper.find('a[href="/roadmap/entry/building-0"]').exists()).toBe(true);
         wrapper.unmount();
     });
@@ -230,7 +230,7 @@ describe('roadmap changes tab', () => {
     test('shows an entry its linked pull requests', async () => {
         const wrapper = await render('/roadmap/entry/building-0');
         expect(wrapper.text()).toContain('Pull requests');
-        expect(wrapper.find('a[href="https://github.com/MistWarp/scratch-gui/pull/20"]').exists()).toBe(true);
+        expect(wrapper.find('a[href="https://github.com/Bilup-next/scratch-gui/pull/20"]').exists()).toBe(true);
         wrapper.unmount();
     });
 

@@ -54,5 +54,7 @@ jobs:
         body: |
           `pnpm run deps:sync` found one or more engine forks ahead of the pins in
           package.json. Merging this brings the editor build back in step with
-          `develop` on every MistWarp fork.
+          `develop` on each fork listed in `scripts/sync-forks.mjs`:
+          `scratch-vm`, `scratch-render` and `scratch-blocks` track Bilup-Next,
+          `scratch-audio` and `scratch-paint` still track MistWarp.
         delete-branch: true

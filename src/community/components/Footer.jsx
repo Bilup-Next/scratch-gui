@@ -9,7 +9,7 @@ import logo from '../assets/mistwarp-logo.png';
 import styles from './Footer.module.css';
 
 const commitUrl = BUILD_ID && BUILD_ID !== 'dev' ?
-    `https://github.com/MistWarp/scratch-gui/commit/${BUILD_ID}` : null;
+    `https://github.com/Bilup-next/scratch-gui/commit/${BUILD_ID}` : null;
 
 const Footer = () => {
     const {text: communityText} = useCommunityText();
